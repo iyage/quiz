@@ -8,6 +8,7 @@ public class WkquizappApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(WkquizappApplication.class, args);
+
     }
 
 }
