@@ -1,10 +1,14 @@
 package com.example.wkquizapp.model;
 
 import com.example.wkquizapp.enums.Role;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,14 +21,4 @@ public class UserModel {
     private String password;
     private Role role;
     private String bio;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
 }

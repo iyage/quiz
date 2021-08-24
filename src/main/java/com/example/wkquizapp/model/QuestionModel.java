@@ -17,4 +17,6 @@ public class QuestionModel {
     @Column(name = "i_d", nullable = false)
     private Long id;
     private String content;
+    @ManyToOne
+    private  CourseModel courseModel;
 }
