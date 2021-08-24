@@ -19,6 +19,7 @@ public class UserModel {
     private String lastName;
     private  String emailAddress;
     private String password;
+  @Enumerated(EnumType.STRING)
     private Role role;
     private String bio;
 }
