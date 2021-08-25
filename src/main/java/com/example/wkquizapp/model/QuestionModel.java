@@ -17,6 +17,8 @@ public class QuestionModel {
     @Column(name = "i_d", nullable = false)
     private Long id;
     private String content;
-    @ManyToOne
-    private  CourseModel courseModel;
+//    @ManyToOne
+//    private  CourseModel courseModel;
+    @OneToMany(mappedBy = "questionModel")
+    private  Set<AnswerModel>answers = new HashSet<>();
 }

@@ -39,6 +39,7 @@ public class QuestionServiceImpl implements QuestionService {
             add(answerC);
             add(answerD);
         }};
+        Set<AnswerModel> answerModelSet = new HashSet<>();
 
         QuestionModel questionModel = new QuestionModel();
         questionModel.setContent(question);
@@ -50,8 +51,18 @@ public class QuestionServiceImpl implements QuestionService {
            answerModel.setCorrect(answer.get(i));
            answerModel.setQuestionModel(questionModel);
            answerRepository.save(answerModel);
+           answerModelSet.add(answerModel);
        }
+       questionModel.setAnswers(answerModelSet);
+        for (AnswerModel e:questionModel.getAnswers()) {
+            System.out.println(e.getContent());
+        }
 
         return true;
+    }
+
+    @Override
+    public List<QuestionModel> findAllQuestions() {
+        return questionRepository.findAll();
     }
 }

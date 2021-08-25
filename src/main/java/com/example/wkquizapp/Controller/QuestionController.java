@@ -1,12 +1,18 @@
 package com.example.wkquizapp.Controller;
 
 import com.example.wkquizapp.Services.ServiceImpl.QuestionServiceImpl;
+import com.example.wkquizapp.model.QuestionModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class QuestionController {
@@ -57,6 +63,21 @@ public class QuestionController {
         ModelAndView modelAndView = new ModelAndView("quiz_edit_page");
         return modelAndView;
     }
+    @GetMapping("/tak_equiz")
+    public  String quizpzge(Model model, HttpServletRequest request){
+        List<QuestionModel> questions = questionService.findAllQuestions();
+     model.addAttribute("questions",questions);
+     String[] option = {"A","B","C","D"};
+     model.addAttribute("option",option);
+    return "quiz_page";
+  }
+  @PostMapping("/submit")
+    public void submitForm(HttpServletRequest request){
+     String[] str = request.getParameterValues("questionId");
+      for (String e:str) {
+          System.out.println(e);
+      }
+  }
 
 
 
