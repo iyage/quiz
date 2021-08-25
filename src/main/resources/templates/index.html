@@ -49,21 +49,39 @@
     <div class="row">
         <div class="col-lg-3" style="margin-bottom: 10px">
             <div class="card" style="width: 18rem;">
-                <img src="../static/sql.jpg" class="card-img-top" alt="...">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <img src="../static/sql.jpg" class="card-img-top" alt="..." title="CLICK IMAGE TO SEE FURTHER DETAILS ABOUT THE COURSE.">
+                </button>
                 <div class="card-body">
                     <p class="card-text text-center">INTRO TO JAVA</p>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3" style="margin-bottom: 10px">
-            <div class="card" style="width: 18rem;">
-                <img src="../static/sql.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text text-center">INTRO TO JAVA</p>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark bg-opacity-50">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-success align-items-center" id="exampleModalLabel">Intro To Java</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center text-light">
+                        Have you been keen to not just know the world leading Programming language but to also master it?
+                        This Course is a bet for that!!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Login</button>
+                        <button type="button" class="btn btn-primary">Register Here</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
     <div class="row"  style="margin-top: 200px">
 <!-- Footer -->
 <footer class="text-center text-white navbar-dark bg-dark">
