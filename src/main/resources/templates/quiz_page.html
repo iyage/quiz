@@ -67,7 +67,7 @@
                        <div class="mb-3">
                            <table cellpadding="7px">
                                <tr th:each="answer:${question.getAnswers()}">
-                                   <td><input class="form-check-input" type="radio"  th:value="${answer.getId()}"></td>
+                                   <td><input class="form-check-input" type="radio"th:value="${answer.getCorrect()}"  th:with="quest = ${question.getId()}" th:name="${quest}+'q'" ></td>
                                    <td>
                                        <input type="text" class="form-control" style="width: 450px" th:value="${answer.getContent()}"
                                          ></td>

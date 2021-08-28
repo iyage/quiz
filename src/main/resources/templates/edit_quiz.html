@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Site Metas -->
+    <title>SmartEDU - Education Responsive HTML5 Template</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <div th:replace="commons::header_link"></div>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/custom.css">
+
+    <!-- Modernizer for Portfolio -->
+    <script src="js/modernizer.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body class="host_version">
+<!-- Modal -->
+<div th:replace="commons::modal"></div>
+<!-- LOADER -->
+<div th:replace="commons::loader"></div>
+<!-- END LOADER -->
+<!-- Start header -->
+<div th:replace="commons::teachernav"></div>
+<!-- End header -->
+	
+	<div class="all-title-box">
+		<div class="container text-center">
+			<h1>Quiz Content</h1>
+		</div>
+	</div>
+	
+    <div id="contact" class="section wb">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xl-12 col-md-12 col-sm-12">
+                    <div class="row">
+                    <div class="col-xl-2 col-md-4"></div>
+                    <div class="col-xl-8 col-md-8 col-sm-12">
+                        <div class="card" style="width: 50rem;">
+                            <div class="card-header">
+                                Featured
+                            </div>
+                            <form style="padding: 30px" action="#" th:action="@{/savequiz}" method="post">
+                                <div class="mb-3">
+                                    <div class="form-floating">
+                                        <input type="hidden" th:value="${id}" name="id">
+                                        <textarea class="form-control" placeholder="Type Question here" id="question" name="question" style="height: 200px"></textarea>
+                                        <label for="question">Type Question here</label>
+                                    </div><br>
+                                </div>
+                                <div class="mb-3">
+                                    <table cellpadding="10px">
+                                        <tbody>
+                                        <tr>
+                                            <td>  Option A</td>
+                                            <td><input type="text" class="form-control" id="optionA" style="word-wrap: normal;width: 470px" name ="optionA" ></td>
+                                            <td>  <input type="checkbox" class="form-check-input" id="answerA" value="1" name="answerA" style=""></td>
+                                            <td>  Tick if correct</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="mb-3">
+                                    <table cellpadding="10px">
+                                        <tbody>
+                                        <tr>
+                                            <td>  Option B</td>
+                                            <td><input type="text" class="form-control" id="optionB" style="word-wrap: normal;width: 470px" name="optionB" ></td>
+                                            <td>  <input type="checkbox" class="form-check-input" id="answerB" value="1" name="answerB"></td>
+                                            <td>  Tick if correct</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+
+                                </div>
+                                <div class="mb-3">
+                                    <table cellpadding="10px">
+                                        <tbody>
+                                        <tr>
+                                            <td>  Option C</td>
+                                            <td><input type="text" class="form-control" id="optionC" style="word-wrap: normal;width: 470px" name="optionC" ></td>
+                                            <td>  <input type="checkbox" class="form-check-input" id="aanswerC" value="1" name="answerC"></td>
+                                            <td>  Tick if correct</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div class="mb-3">
+                                    <table cellpadding="10px">
+                                        <tbody>
+                                        <tr>
+                                            <td>  Option D</td>
+                                            <td><input type="text" class="form-control" id="optionD" style="word-wrap: normal;width: 470px" name="optionD" ></td>
+                                            <td >  <input type="checkbox" class="form-check-input" id="aanswerD" value="1" name="answerD"></td>
+                                            <td>  Tick if correct</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                        <div class="col-xl-2 col-md-4"></div>
+                    </div>
+				</div>
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+<div th:replace="commons::footer"></div>
+
+</body>
+</html>

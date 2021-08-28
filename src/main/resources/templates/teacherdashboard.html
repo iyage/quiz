@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="commons::header_link"></div>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body class="host_version">
+	<!-- Modal -->
+<div th:replace="commons::modal"></div>
+	<!-- LOADER -->
+<div th:replace="commons::loader"></div>
+	<!-- END LOADER -->
+    <!-- Start header -->
+	<div th:replace="commons::teachernav"></div>
+	<!-- End header -->
+	
+	<div class="all-title-box">
+		<div class="container text-center">
+			<h1><span style="padding: 5px" th:text="${session.user.getFirstName()}"></span><span  style="padding: 5px" th:text="${session.user.getLastName()}"></span><span class="m_1">java stack</span></h1>
+		</div>
+	</div>
+	
+    <div id="contact" class="section wb">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>Need Help? Sure we are Online!</h3>
+                <p class="lead">Let us give you more details about the special offer website you want us. Please fill out the form below. <br>We have million of website owners who happy to work with us!</p>
+            </div><!-- end title -->
+
+            <div class="row">
+                <div class="col-xl-6 col-md-12 col-sm-12">
+                    <div class="contact_form" style="margin-right: 2px">
+                        <div id="message"></div>
+                        <div><h3 style="color: white">Create new Course</h3></div>
+                        <form id="contactform" class="" action="#" th:action="@{/create_course}"  method="post" th:object="${course}">
+                            <div class="row row-fluid">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <input type="text" name="courseTitle" id="course_title" class="form-control" placeholder="Course-Title" >
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                <select class="form-select" aria-label="Default select example" style="height: 55px;border-radius: 5px" name="category" >
+                                    <option>Course category menu</option>
+                                    <option th:each="cat:${T(com.example.wkquizapp.enums.Category).values()}"
+                                    th:value="${cat}"
+                                    th:text="${cat}"></option>
+                                </select>
+                            </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <input type="hidden" th:value="${session.user.getId()}" name="teacher">
+                                    <input type="date" name="date" id="datecreated" class="form-control" >
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <textarea class="form-control" name="courseDescription" id="courseDescription" rows="6" placeholder="Course Description"></textarea>
+                                </div>
+                                <div class="text-center pd">
+                                    <button type="submit"  id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Create</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- end col -->
+				<div class="col-xl-6 col-md-12 col-sm-12">
+                            <div class="row">
+                            <table cellpadding="20px" border="solid">
+                             <thead>
+                             <tr>
+                                 <th>Category</th>
+                                 <th>Course Title</th>
+                             </tr>
+                             </thead>
+                                <tbody>
+                                <tr th:each="courses:${courses}">
+                                    <td th:text="${courses.getCategory()}"></td>
+                                    <td th:text="${courses.getCourseTitle()}"></td>
+                                    <td><a th:href="@{'/create_content/{id}'(id=${courses.getId()})}"><button type="button" class="btn btn-primary">Create content</button></a></td>
+                                    <td><a th:href="@{'/create_quiz/{id}'(id=${courses.getId()})}"><button type="button" class="btn btn-primary">Create Quiz</button></a></td>
+                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+					</div>
+				</div>
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+    <div th:replace="commons::footer"></div>
+
+</body>
+</html>
