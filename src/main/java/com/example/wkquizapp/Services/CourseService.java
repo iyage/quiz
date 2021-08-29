@@ -13,4 +13,5 @@ public interface CourseService {
     public CourseModel findCourseById(Long id);
     List<CourseModel>findAllCourses();
     List<CourseModel>findAllCoursesByStudentId(Long Id);
+    void updateCourse(CourseModel courseModel);
 }

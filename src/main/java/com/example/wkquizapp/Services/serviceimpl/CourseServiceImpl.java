@@ -39,4 +39,9 @@ public class CourseServiceImpl implements CourseService {
         return courseRepository.findCourseModelByStudentsId(Id);
     }
 
+    @Override
+    public void updateCourse(CourseModel courseModel) {
+
+    }
+
 }

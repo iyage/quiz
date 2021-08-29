@@ -2,7 +2,9 @@ package com.example.wkquizapp.Controller;
 
 import com.example.wkquizapp.Repository.StudentRepository;
 import com.example.wkquizapp.Services.serviceimpl.CourseServiceImpl;
+import com.example.wkquizapp.Services.serviceimpl.ResultServiceImpl;
 import com.example.wkquizapp.model.CourseModel;
+import com.example.wkquizapp.model.ResultModel;
 import com.example.wkquizapp.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,8 @@ import java.util.List;
 @Controller
 public class StudentController {
     @Autowired
+    ResultServiceImpl resultService;
+    @Autowired
     StudentRepository studentRepository;
    @Autowired
     CourseServiceImpl courseService;
@@ -24,6 +28,8 @@ public class StudentController {
     public  String viewStudentProfile(Model model, HttpSession session){
         Student student = (Student)  session.getAttribute("user");
         List<CourseModel> courseList = courseService.findAllCoursesByStudentId(student.getId());
+        List<ResultModel> resultList = resultService.findResultByStudentId(student.getId());
+        model.addAttribute("results",resultList);
         model.addAttribute("courselist",courseList);
         return "student_dashboard";
     }

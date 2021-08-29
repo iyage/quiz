@@ -1,7 +1,9 @@
 package com.example.wkquizapp.Controller;
 
+import com.example.wkquizapp.Services.serviceimpl.ResultServiceImpl;
 import com.example.wkquizapp.Services.serviceimpl.StudentServiceImpl;
 import com.example.wkquizapp.Services.serviceimpl.TeacherServiceImpl;
+import com.example.wkquizapp.model.ResultModel;
 import com.example.wkquizapp.model.Student;
 import com.example.wkquizapp.model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class LoginController {
+    @Autowired
+    ResultServiceImpl resultService;
     @Autowired
     TeacherServiceImpl teacherService;
     @Autowired
@@ -47,9 +52,12 @@ public class LoginController {
         Optional<Student> optional =   studentService.findStudent(email,password);
         if(optional.isPresent()){
             Student student = optional.get();
-            String role = student.getRole().toString();
+            Long id = student.getId();
+            List<ResultModel> results = resultService.findResultByStudentId(id);
+             String role = student.getRole().toString();
             session.setAttribute("role",role);
             session.setAttribute("user",student);
+            model.addAttribute("results",results);
             return "redirect:/student_profile";
 
         }

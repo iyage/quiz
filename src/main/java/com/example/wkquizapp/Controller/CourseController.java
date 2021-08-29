@@ -25,10 +25,13 @@ public class CourseController {
     model.addAttribute("id",id);
     return"/richtexteditor";
 }
+//@RequestMapping(value = "/save_content",method = RequestMethod.PUT)
 @PostMapping("/save_content")
     public  String saveContent(@RequestParam(name = "id")Long id,
                                @RequestParam(name = "content")String content){
     CourseModel  courseModel = courseService.findCourseById(id);
+//    CourseModel  courseModel = new CourseModel();
+//    courseModel.setId(id);
     courseModel.setContent(content);
     courseService.createCourse(courseModel);
   String route = "redirect:/create_content/"+String.valueOf(id);

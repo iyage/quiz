@@ -82,4 +82,9 @@ public class QuestionServiceImpl implements QuestionService {
 
    return -1L;
     }
+
+    @Override
+    public List<QuestionModel> findQuestionByCourseId(Long id) {
+        return  questionRepository.findQuestionModelsByCourseModelId(id);
+    }
 }

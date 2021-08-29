@@ -15,4 +15,5 @@ public interface QuestionService {
                                   Long id);
    List<QuestionModel> findAllQuestions();
     public Long findQuestionById(Long id);
+    List<QuestionModel>findQuestionByCourseId(Long id);
 }
