@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Site Metas -->
+    <title>SmartEDU - Education Responsive HTML5 Template</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <div th:replace="commons::header_link"></div>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/custom.css">
+
+    <!-- Modernizer for Portfolio -->
+    <script src="js/modernizer.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body class="host_version">
+<!-- Modal -->
+<div th:replace="commons::modal"></div>
+<!-- LOADER -->
+<div th:replace="commons::loader"></div>
+<!-- END LOADER -->
+<!-- Start header -->
+<div th:replace="student_common::studentnav"></div>
+<!-- End header -->
+    <div id="contact" class="section wb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3"></div>
+
+                        <div class="col-md-6">
+
+                            <form th:action="@{/submit}" method="post">
+                                  <input type="hidden" name="id" th:value="${id}">
+
+                                <div th:each="question,iStat:${questions}">
+                                    <div style="border: solid;padding: 20px" >
+                                        <div><p th:text="'Question:'+${iStat.count}"></p></div>
+                                        <div class="mb-3">
+                                            <textarea cols="60" rows="4"  readonly th:text="${question.getContent()}" style="border-radius: 5px"></textarea>
+                                            <input type="hidden"  th:value="${question.getId()}" name="questionId"  >
+
+                                        </div>
+                                        <div class="mb-3">
+                                            <table cellpadding="7px">
+                                                <tr th:each="answer:${question.getAnswers()}">
+                                                    <td><input class="form-check-input" type="radio"th:value="${answer.getCorrect()}"  th:with="quest = ${question.getId()}" th:name="${quest}+'q'" ></td>
+                                                    <td>
+                                                        <input type="text" class="form-control" style="width: 450px" th:value="${answer.getContent()}"
+                                                        ></td>
+
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                </div>
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+<div th:replace="commons::footer"></div>
+
+</body>
+</html>

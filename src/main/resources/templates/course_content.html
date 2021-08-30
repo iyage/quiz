@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/css/site.css">
+    <link rel="stylesheet" href="/css/css/richtext.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <!-- Site Metas -->
+    <title>SmartEDU - Education Responsive HTML5 Template</title>
+
+    <div th:insert="commons.html::header_link"></div>
+
+
+
+    <link rel="stylesheet" href="../static/css/css/site.css">
+    <link rel="stylesheet" href="../static/css/css/richtext.min.css">
+    <script type="text/javascript" src="..static/js/js/jquery.richtext.js"></script>
+</head>
+<body class="host_version">
+
+<!-- Modal -->
+<div th:replace="commons::modal"></div>
+<!-- LOADER -->
+<div th:replace="commons::loader"></div>
+<!-- END LOADER -->
+<!-- Start header -->
+<div th:replace="commons::teachernav"></div>
+<!-- End header -->
+	
+	<div class="all-title-box">
+		<div class="container text-center">
+			<h1>Contact<span class="m_1">Lorem Ipsum dolroin gravida nibh vel velit.</span></h1>
+		</div>
+	</div>
+	
+    <div id="contact" class="section wb">
+        <div class="container">
+            <div class="row">
+            <form>
+                <textarea class="content" name="example"></textarea>
+            </form>
+
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+    <div th:insert="commons::footer"></div>
+
+<script>
+    $(document).ready(function() {
+        $('.content').richText();
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Site Metas -->
+    <title>SmartEDU - Education Responsive HTML5 Template</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <div th:replace="commons::header_link"></div>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/custom.css">
+
+    <!-- Modernizer for Portfolio -->
+    <script src="/jsjs/modernizer.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body class="host_version">
+<!-- Modal -->
+<div th:replace="commons::modal"></div>
+<!-- LOADER -->
+<div th:replace="commons::loader"></div>
+<!-- END LOADER -->
+<!-- Start header -->
+<div th:replace="student_common::studentnav"></div>
+<!-- End header -->
+	<div class="all-title-box">
+		<div class="container text-center">
+			<h1>Contact<span class="m_1">Lorem Ipsum dolroin gravida nibh vel velit.</span></h1>
+		</div>
+	</div>
+	
+    <div id="contact" class="section wb">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>Need Help? Sure we are Online!</h3>
+                <p class="lead">Let us give you more details about the special offer website you want us. Please fill out the form below. <br>We have million of website owners who happy to work with us!</p>
+            </div><!-- end title -->
+
+            <div class="row">
+                <div class="col-xl-6 col-md-12 col-sm-12">
+                    <div class="contact_form" style="margin-right: 2px;color: whitesmoke" >
+                        <table class="table table-bordered" style="border-color: blue" >
+                            <thead>
+                            <tr>
+                                <th>Course Title</th>
+                                <th>Category</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                          <tbody>
+                          <tr  th:each="course:${courselist}">
+                              <td th:text="${course.getCourseTitle()}"></td>
+                      <td th:text="${course.getCategory()}"></td>
+                              <td><button type="button" class="btn btn-danger">Delete</button></td>
+                              <td>
+                              <a th:href="@{'/take_course/{id}'(id=${course.getId()})}"><button type="button" class="btn btn-primary">take course</button></a><br><br>
+                              <a th:href="@{'/take_quiz/{id}'(id=${course.getId()})}"><button type="button" class="btn btn-danger">Take quiz</button></a></td>
+                              </td>
+
+                          </tr>
+                          </tbody>
+                        </table>
+                    </div>
+
+                </div><!-- end col -->
+				<div class="col-xl-6 col-md-12 col-sm-12">
+                    <div class="contact_form" style="margin-right: 2px;color: whitesmoke" >
+                        <table class="table table-bordered" style="border-color: blue" >
+                            <thead>
+                            <tr>
+                                <th>Course Title</th>
+                                <th>Category</th>
+                                <th>Sore</th>
+                                <th>Date taken</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="result:${results}">
+                                <td th:text="${result.getCourseModel().getCourseTitle()}"></td>
+                                <td th:text="${result.getCourseModel().getCategory()}"></td>
+                                <td th:text="${result.getScore()}"></td>
+                                <td th:text="${result.getDate()}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+				</div>
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+<div th:replace="commons::footer"></div>
+
+</body>
+</html>

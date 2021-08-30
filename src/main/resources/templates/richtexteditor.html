@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/css/site.css">
+    <link rel="stylesheet" href="/css/css/richtext.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/js/jquery.richtext.js"></script>
+    <div th:replace="commons::header_link"></div>
+
+</head>
+<!-- End header -->
+<body class="host_version">
+<div th:replace="commons::modal"></div>
+<!-- LOADER -->
+<!--<div th:replace="commons::loader"></div>-->
+<!-- END LOADER -->
+<!-- Start header -->
+<div th:replace="commons::teachernav"></div>
+<div class="all-title-box">
+    <div class="container text-center">
+<!--        <h1><span style="padding: 5px" th:text="${session.user.getFirstName()}"></span><span  style="padding: 5px" th:text="${session.user.getLastName()}"></span><span class="m_1">java stack</span></h1>-->
+    </div>
+</div>
+
+    <div class="container" style="margin-top: 30px; padding: 10px">
+
+        <div class="row">
+            <div class="col-xl-12 col-md-12 col-sm-12">
+                <form action="#"  th:action="@{/save_content}" method="POST">
+<div class="page-wrapper box-content">
+    <textarea class="content" name="content"></textarea>
+    <input type="hidden" name="id" th:value="${id}">
+    <br>
+    <button type="submit" class="btn btn-success">Save</button>
+</div>
+
+
+
+                </form>
+
+            </div>
+        </div><!-- end row -->
+    </div><!-- end container -->
+
+<script>
+    $(document).ready(function() {
+        $('.content').richText();
+    });
+</script>
+</body>
+</html>
