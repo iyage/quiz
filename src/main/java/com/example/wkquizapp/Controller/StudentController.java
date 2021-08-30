@@ -35,6 +35,7 @@ public class StudentController {
     }
     @GetMapping("register_course/{id}")
     public String registerCourse(@PathVariable(value = "id")Long id,HttpSession session){
+
         if(session.getAttribute("user")!=null && session.getAttribute("role").toString().equalsIgnoreCase("STUDENT")){
             Student student = (Student) session.getAttribute("user");
             CourseModel courseModel = courseService.findCourseById(id);
