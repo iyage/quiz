@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -38,11 +37,13 @@ public class CourseController {
     return route;
 }
 @GetMapping("/courses")
-    public  String viewCourses(Model model){
+    public String viewCourses(Model model){
    List<CourseModel> courseList = courseService.findAllCourses();
+;
    model.addAttribute("courselist",courseList);
     return "all_course";
-}
+
+   }
 @GetMapping("/take_course/{id}")
     public String  viewCourse(@PathVariable(value = "id")Long id, Model model){
     CourseModel courseModel = courseService.findCourseById(id);
