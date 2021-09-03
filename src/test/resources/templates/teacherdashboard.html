@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body class="host_version">
+
+			<h1><span style="padding: 5px" th:text="${session.user.getFirstName()}"></span><span  style="padding: 5px" th:text="${session.user.getLastName()}"></span><span class="m_1">java stack</span></h1>
+                            <table cellpadding="20px" border="solid">
+                             <thead>
+                             </thead>
+                                <tbody>
+                                <tr th:each="courses:${courses}">
+                                    <td th:text="${courses.getCategory()}"></td>
+                                    <td th:text="${courses.getCourseTitle()}"></td>
+                                    <td><a th:href="@{'/create_content/{id}'(id=${courses.getId()})}"><button type="button" class="btn btn-primary">Create content</button></a></td>
+                                    <td><a th:href="@{'/create_quiz/{id}'(id=${courses.getId()})}"><button type="button" class="btn btn-primary">Create Quiz</button></a></td>
+                                </tr>
+                                </tbody>
+                            </table></body></html>
